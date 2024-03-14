@@ -1,17 +1,40 @@
-import React, {useState} from "react";
-import TextElement from "../components/TextElement/TextElement";
+import React, {useContext, useState} from "react";
+import {listOfElements} from "../utils/listOfElements";
+import {CiImageOn, CiText, CiViewList} from "react-icons/ci";
+import {FaTable} from "react-icons/fa";
+import {SelectedElement} from "../utils/context";
 
-interface Props {
-    onSelectedElement: () => any
-}
+const ElementsContainer = () => {
+    const {selectedElement, updateSelectedElement} = useContext<any>(SelectedElement)
 
-const ElementsContainer: React.FC<Props> = ({onSelectedElement}) => {
-    const [element, setElement] = useState('')
+    function dragStart(item: any) {
+        console.log(item)
+        if(item) {
+            updateSelectedElement(item)
+        }
+
+    }
+
     return(
-        <div className={'p-4 m-8 rounded bg-gray-600 h-5/6'}>
-            <header className={'text-center text-2xl shadow-white-200 rounded shadow-md p-2'}>Elements</header>
-            <TextElement onSelectElement={onSelectedElement}/>
-        </div>
+            <div className={''}>
+                <header className={'text-center mt-3'}>Elements</header>
+                {listOfElements.map((item, index) => {
+                    return (
+                    <div
+                        key={index}
+                        draggable
+                        onDragStart={() => dragStart(item)}
+                        className={'flex justify-center mt-3 cursor-pointer'}>
+                        <span className={'border-2 p-2'}>
+                            {item === 'text' && <CiText className={'font-bold text-2xl '}/>}
+                            {item === 'list' && <CiViewList className={'font-bold text-2xl '}/>}
+                            {item === 'table' && <FaTable className={'font-bold text-2xl '}/>}
+                            {item === 'image' && <CiImageOn className={'font-bold text-2xl '}/>}
+                        </span>
+                    </div>
+                    )
+                })}
+            </div>
     )
 }
 

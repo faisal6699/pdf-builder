@@ -1,0 +1,1 @@
+export const listOfElements: string[] = ['text', 'list', 'table', 'image']

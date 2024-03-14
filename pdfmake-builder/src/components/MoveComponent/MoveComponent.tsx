@@ -9,6 +9,7 @@ interface Props {
 
 const MoveComponent: React.FC<Props> = ({targetRef}) => {
 
+    console.log(targetRef)
  return(
      <Moveable
          target={targetRef}
