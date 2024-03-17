@@ -19,8 +19,8 @@ const Header = () => {
         <header className="bg-white">
             <nav className="mx-auto flex max-w-7xl items-center justify-end p-2 lg:px-8" aria-label="Global">
                 <div className="hidden lg:flex lg:gap-x-12">
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => generateCode()}>Code</a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => generatePdf()}>Generate PDF</a>
+                    <a href="javascript:" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => generateCode()}>Code</a>
+                    <a href="javascript:" className="text-sm font-semibold leading-6 text-gray-900" onClick={() => generatePdf()}>Generate PDF</a>
                 </div>
             </nav>
         </header>
